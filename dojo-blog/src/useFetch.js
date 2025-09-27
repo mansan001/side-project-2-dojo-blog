@@ -6,8 +6,10 @@ const useFetch = (url) => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        const abortCont = new AbortController();
+
         setTimeout(() => {
-            fetch('http://localhost:8000/blogs')
+            fetch(url)
             .then(res => {
                 if (!res.ok) {
                     throw Error('could not fetch the data for that resource');
@@ -20,10 +22,16 @@ const useFetch = (url) => {
                 setBlogs(data); // set the data
             }) 
             .catch(err => { //error catching functionality 
-                setIsPending(false);
-                setError(err.message);
+                if(err.name === 'AbortError') {
+                    console.log('fetch aborted');
+                }else{
+                    setIsPending(false);
+                    setError(err.message);
+                }
             })
         }, 1000);
+        return () => abortCont.abort();
+
     }, [url]); // This empty array is a dependency array. <= (old comment) -- UseEffect is triggered when a change happened in the [url]
 
     return {data, isPending, error};
