@@ -32,16 +32,12 @@ export default App;
 // git status
 // git add .
 // git commit -m "message"
-// git push
+// git push origin main
 
 // Todos:
-// - Form in Create file: DONE
-// - prevent function for submitting the form: DONE 
-// - Redirect Page once submitted: Done
-// - Delete blogs: Done
-// - 404 Request: 
-
-// - Add a text when there's no item displayed (when all blogs are deleted)
-// - Add delete button in the quick view bar per blog
+// - Add a text when there's no item displayed (when all blogs are deleted): DONE
+// - Add delete button in the quick view bar per blog: DONE but the screen is not updating (only deletd on the server): DONE
+// - Add a small notification on the lower left of the screen: DONE using sonner
 // - Add confirmation before deleting
 // - Design 404 Page
+// - Add Sorting of 
